@@ -1,0 +1,28 @@
+<div class="container">
+<h1>User:</h1>
+<div class="row">
+  <aside class="span4">
+    <section>
+      <h1>
+       <%= image_tag @user.avatar.url(:thumb) %><br/>
+        <%= @user.username %>
+      </h1>
+    </section>
+    <section>
+      <%= render 'partials/article_form' %>
+    </section>
+  </aside>
+  <div class="span8">
+    <% if @user.articles.any? %>
+      <h3>Articles (<%= @user.articles.count %>)</h3>
+      <ol class="article">
+        <%= render 'articles/articles' %>
+      </ol>
+      <% end %>
+  </div>
+  <div class="span8">
+      <h3>Articles Feed</h3>
+      <%= render 'partials/feed' %>
+    </div>
+</div>
+</div>
