@@ -9,7 +9,7 @@
       </h1>
     </section>
     <section>
-      <%= render 'partials/article_form' %>
+      <%= render 'partials/article_form' if @user == current_user%>
     </section>
   </aside>
   <div class="span8">

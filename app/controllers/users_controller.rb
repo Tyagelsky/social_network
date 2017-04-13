@@ -9,6 +9,6 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @articles = @user.articles
     @article = current_user.articles.build
-    @feed_items = current_user.feed
+    @feed_items = @user.feed
   end
 end

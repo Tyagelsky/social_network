@@ -1,7 +1,20 @@
 <% if @feed_items.any? %>
   <ol class="microposts">
-    <%= render partial: 'partials/feed_item', collection: @feed_items %>
-    
+    <% @feed_items.each do |feed_item| %>
+    <li id="<%= feed_item.id %>">
+      <%= image_tag feed_item.user.avatar.url(:thumb) %>
+    <span class="user">
+    <%= link_to feed_item.user.username, feed_item.user %>
+    </span>
+    <span class="body"><%= feed_item.body %></span>
+    <span class="timestamp">
+    Posted <%= time_ago_in_words(feed_item.created_at) %> ago.
+    </span>
+    <% if can? :delete, feed_item %>
+    <div><%= link_to 'Delete', feed_item, method: :delete, data: { confirm: 'Are you sure?'} %></div>
+    <% end %>
+    </li>
+    <% end %>
   </ol>
 
 <% end %>
