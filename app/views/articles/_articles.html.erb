@@ -1,7 +1,10 @@
 <li>
-  <span class="label"><%= article.label %></span>
-  <span class="body"><%= article.body %></span>
+  <span class="label"><%= @article.label %></span>
+  <span class="body"><%= @article.body %></span>
   <span class="timestamp">
-    Posted <%= time_ago_in_words(article.created_at) %> ago.
+    Posted <%= @article.created_at %> ago.
   </span>
+  <% if can? :delete, @article %>
+   <div><%= link_to 'Delete', @article, method: :delete, data: { confirm: 'Are you sure?'} %></div>
+  <% end %>
 </li>

@@ -1,4 +1,7 @@
-<%= form_for @article, url: {action: "show"} do |f| %>
+<%= form_for @article, :url => articles_path(@article) do |f| %>
+  <div class="field">
+    <%= f.text_field :label %>
+  </div>
   <div class="field">
     <%= f.text_area :body, placeholder: "New article.." %>
   </div>

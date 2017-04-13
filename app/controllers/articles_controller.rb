@@ -14,21 +14,20 @@ class ArticlesController < ApplicationController
   end
 
   def create
-    @article = current_user.articles.build(article_params)
-    if @article.save
+    @article = current_user.articles.create(article_params)
+    if @article
       flash[:success]="Article created!"
-      redirect_to user_path
     else
       @feed_items = []
       flash[:alert]="Oops!"
-      render 'new'
     end
+    redirect_to current_user
   end
 
   def update
     @article.update_attributes(article_params)
      if @article.errors.empty?
-       redirect_to user_path
+       redirect_to current_user
      else
        render 'edit'
      end
@@ -37,7 +36,7 @@ class ArticlesController < ApplicationController
   def destroy
     @article = Article.find(params[:id])
     @article.destroy
-    redirect_to user_path
+    redirect_to current_user
   end
 
   private
