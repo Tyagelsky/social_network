@@ -2,8 +2,10 @@
   <div class="row">
     <aside class="span4">
       <section>
-         <%= image_tag @user.avatar.url(:thumb) %><br/>
-          <h1><%= @user.username %></h1>
+         <h1>
+           <%= image_tag @user.avatar.url(:thumb) %><br/>
+          <%= @user.username %>
+        </h1>
       </section>
       <section>
           <%= render 'partials/stats' %>
