@@ -1,18 +1,19 @@
 <div class="container">
-<h1>User:</h1>
-<div class="row">
-  <aside class="span4">
-    <section>
-      <h1>
-       <%= image_tag @user.avatar.url(:thumb) %><br/>
-        <%= @user.username %>
-      </h1>
-    </section>
-    <section>
-      <%= render 'partials/article_form' if @user == current_user%>
-    </section>
-  </aside>
+  <div class="row">
+    <aside class="span4">
+      <section>
+         <%= image_tag @user.avatar.url(:thumb) %><br/>
+          <h1><%= @user.username %></h1>
+      </section>
+      <section>
+          <%= render 'partials/stats' %>
+        </section>
+      <section>
+        <%= render 'partials/article_form' if @user == current_user%>
+      </section>
+    </aside>
   <div class="span8">
+     <%= render 'follow_form' if signed_in? %>
     <% if @user.articles.any? %>
       <h3>Articles (<%= @user.articles.count %>)</h3>
       <ol class="article">
