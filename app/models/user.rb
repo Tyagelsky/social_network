@@ -13,7 +13,7 @@ class User < ActiveRecord::Base
   has_many :followers, through: :reverse_relationships, source: :follower
 
   def feed
-    Article.where("user_id = ?", id)
+    Article.from_users_followed_by(self)
   end
 
   def following?(other_user)
