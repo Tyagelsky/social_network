@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   resources :articles do
     resources :comments
   end
+  
   resources :relationships, only: [:create, :destroy]
   root 'static_pages#root'
   # The priority is based upon order of creation: first created -> highest priority.

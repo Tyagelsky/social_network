@@ -18,19 +18,14 @@
      <%= render 'follow_form' if signed_in? %>
     <% if @user.articles.any? %>
       <h3>Articles (<%= @user.articles.count %>)</h3>
-      <ol class="article">
-        <%= render 'articles/articles' %>
-      </ol>
-        <h3>Comments </h3>
-        <%= render @article.comments %>
-      <ol class="comment">
-        <%= render 'comments/form' %>
-      </ol>
+
+            <%= render partial: 'articles/articles', collection: @articles, as: :article  %>
+        
       <% end %>
   </div>
   <div class="span8">
       <h3>Articles Feed</h3>
       <%= render 'partials/feed' %>
     </div>
-</div>
+  </div>
 </div>

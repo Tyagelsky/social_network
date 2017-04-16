@@ -1,1 +1,4 @@
-<p> <%=comment.content %></p>
+
+  <span class="user"><%=link_to comment.user.username, comment.user %></span> 
+  <span class="content"><%=comment.content %></span>
+  <span class="timestamp">Posted <%= comment.created_at %> ago.</span> <br />

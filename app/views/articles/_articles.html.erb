@@ -1,10 +1,17 @@
-<li>
-  <span class="label"><%= @article.label %></span>
-  <span class="body"><%= @article.body %></span>
+<div>
+<ol class "article">
+  <span class="label"><%= article.label %></span>
+  <span class="body"><%= article.body %></span>
   <span class="timestamp">
-    Posted <%= @article.created_at %> ago.
+    Posted <%= article.created_at %> ago.
   </span>
-  <% if can? :delete, @article %>
-   <div><%= link_to 'Delete', @article, method: :delete, data: { confirm: 'Are you sure?'} %></div>
+  <% if can? :delete, article %>
+   <div><%= link_to 'Delete', article, method: :delete, data: { confirm: 'Are you sure?'} %></div>
   <% end %>
-</li>
+  <h3>Comments </h3>
+  <%= render article.comments %>
+  <div class="comment">
+    <%= render partial: 'comments/form', locals: {article: article} %>
+  </div>
+</ol>
+</div>
