@@ -1,13 +1,17 @@
 class CommentsController < ApplicationController
+  before_action :authenticate_user!
 
   def create
     @article = Article.find(params[:id])
     @comment = @article.comments.create(comment_params)
     @comment.user_id = current_user.id
 
-    if @comment.save
-      redirect_to current_user
+    if @comment
+      flash[:success]="Comment created!"
+    else
+      flash[:alert]="Oops!"
     end
+    redirect_to user_path
 
   end
 
