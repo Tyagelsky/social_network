@@ -1,0 +1,7 @@
+<%= form_for( @comment, url: {action: "create"})  do |f| %>
+    <div class="field">
+    <%= f.label "Comment" %><br />
+    <%= f.text_area :content, placeholder: "New comment.." %>
+  </div>
+  <%= f.submit "OK", class: "btn btn-large btn-primary" %>
+<% end %>

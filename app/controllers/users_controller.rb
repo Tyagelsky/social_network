@@ -9,6 +9,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @articles = @user.articles
     @article = current_user.articles.build
+    @comment = @article.comments.build
     @feed_items = @user.feed
   end
 
