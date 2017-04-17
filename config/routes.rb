@@ -3,14 +3,14 @@ Rails.application.routes.draw do
   resources :users, only: [:index, :show]
   resources :users do
    member do
-     get :following, :followers
+     get :following, :followers , :show_feed
     end
   end
   resources :articles, only: [:new, :create, :update, :destroy]
   resources :articles do
     resources :comments
   end
-  
+
   resources :relationships, only: [:create, :destroy]
   root 'static_pages#root'
   # The priority is based upon order of creation: first created -> highest priority.

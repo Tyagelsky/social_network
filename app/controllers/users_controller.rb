@@ -10,7 +10,13 @@ class UsersController < ApplicationController
     @articles = @user.articles
     @article = current_user.articles.build
     @comment = @article.comments.build
-    @feed_items = @user.feed
+
+  end
+
+  def show_feed
+      @user = User.find(params[:id])
+      @feed_items = @user.feed
+
   end
 
   def following

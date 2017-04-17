@@ -1,0 +1,20 @@
+<div class="container">
+  <div class="row">
+    <aside class="span4">
+      <section>
+         <h1>
+           <%= image_tag current_user.avatar.url(:thumb) %><br/>
+          <%= current_user.username %>
+        </h1>
+      </section>
+      <section>
+          <%= render 'partials/stats' %>
+        </section>
+    </aside>
+  </div>
+  <div class="span4">
+      <h3>Articles Feed</h3>
+      <%= render 'partials/feed' %>
+    </div>
+  </div>
+</div>

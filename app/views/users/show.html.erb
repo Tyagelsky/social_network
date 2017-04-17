@@ -10,6 +10,11 @@
       <section>
           <%= render 'partials/stats' %>
         </section>
+        <div class="feed_items">
+        <section>
+          <%= link_to "Feed", show_feed_user_path, class: "btn btn-large " if @user ==current_user %>
+        </section>
+      </div><br/>
       <section>
         <%= render 'partials/article_form' if @user == current_user%>
       </section>
@@ -20,12 +25,9 @@
       <h3>Articles (<%= @user.articles.count %>)</h3>
 
             <%= render partial: 'articles/articles', collection: @articles, as: :article  %>
-        
+
       <% end %>
   </div>
-  <div class="span8">
-      <h3>Articles Feed</h3>
-      <%= render 'partials/feed' %>
-    </div>
+
   </div>
 </div>

@@ -5,7 +5,7 @@
   <span class="timestamp">
     Posted <%= article.created_at %> ago.
   </span>
-  <% if can? :delete, article %>
+  <% if article.user == current_user %>
    <div><%= link_to 'Delete', article, method: :delete, data: { confirm: 'Are you sure?'} %></div>
   <% end %>
   <h3>Comments </h3>
