@@ -1,8 +1,9 @@
+<div>
+  <%= form_for([article, article.comments.build])  do |f| %>
+      <div class="field">
 
-<%= form_for([article, article.comments.build])  do |f| %>
-    <div class="field">
-
-    <%= f.text_area :content, placeholder: "New comment.." %>
-  </div>
-  <%= f.submit "OK", class: "btn btn-success" %>
-<% end %>
+      <%= f.text_area :content, placeholder: "New comment.." %>
+    </div>
+    <%= f.submit "OK", class: "btn btn-success" %>
+  <% end %>
+</div>

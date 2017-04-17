@@ -1,19 +1,20 @@
 <div>
-<ol class "article">
-  <span class="label"><%= article.label %></span>
-  <span class="body"><%= article.body %></span>
-  <span class="timestamp">
-    Posted <%= article.created_at %> ago.
-  </span>
-  <span class="file"> <%= article.file_file_name %></span>
-  <% if article.user == current_user %>
-  <%= link_to 'Edit', article %>
-  <%= link_to 'Delete', article, method: :delete, data: { confirm: 'Are you sure?'} %><br/>
-  <% end %>
-  <h3>Comments </h3>
-  <%= render article.comments %>
-  <div class="comment">
-    <%= render partial: 'comments/form', locals: {article: article} %>
-  </div>
-</ol>
+  <ol class "article">
+    <span class="label"><%= article.label %></span><br/>
+    <span class="body"><%= article.body %></span><br/>
+    <span class="timestamp">
+      Posted <%= article.created_at %> ago.
+    </span><br/>
+    <span class="file"> <%= article.file_file_name %></span>
+    <%= link_to "Download", article.file.url(:original, false) if article.file.exists?%><br/>
+    <% if article.user == current_user %>
+    <%= link_to 'Edit', edit_article_path(article) %>
+    <%= link_to 'Delete', article, method: :delete, data: { confirm: 'Are you sure?'} %><br/>
+    <% end %>
+    <h3>Comments </h3>
+    <%= render article.comments %>
+    <div class="comment">
+      <%= render partial: 'comments/form', locals: {article: article} %>
+    </div>
+  </ol>
 </div>

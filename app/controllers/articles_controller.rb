@@ -40,6 +40,8 @@ class ArticlesController < ApplicationController
   end
 
   private
+
+
   def find_article
     @article = Article.find(params[:id])
   end

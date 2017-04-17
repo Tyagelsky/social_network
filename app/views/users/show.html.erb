@@ -23,9 +23,7 @@
      <%= render 'follow_form' if signed_in? %>
     <% if @user.articles.any? %>
       <h3>Articles (<%= @user.articles.count %>)</h3>
-
             <%= render partial: 'articles/articles', collection: @articles, as: :article  %>
-
       <% end %>
   </div>
 

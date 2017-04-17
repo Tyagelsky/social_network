@@ -2,10 +2,7 @@
     <div class="field">
     <%= f.text_field :label, placeholder: "Header.." %>
     <%= f.text_area :body, placeholder: "New article.." %>
-  </div>
-  <div class="field">
-   <%= f.label :file %><br>
-   <%= f.file_field :file %>
- </div>
-  <%= f.submit "OK", class: "btn btn-success" %>
+    <p><%= f.file_field :file %><p/>
+    <%= f.submit "OK", class: "btn btn-success" %>
+   </div>
 <% end %>

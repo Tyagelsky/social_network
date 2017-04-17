@@ -6,10 +6,11 @@ Rails.application.routes.draw do
      get :following, :followers , :show_feed
     end
   end
-  resources :articles, only: [:new, :create, :update, :destroy]
+  resources :articles, only: [:new, :create, :destroy]
   resources :articles do
     resources :comments
   end
+  patch "/articles/:id", to: "articles#update", as: "update_article"
 
   resources :relationships, only: [:create, :destroy]
   root 'static_pages#root'
