@@ -6,7 +6,8 @@
     Posted <%= article.created_at %> ago.
   </span>
   <% if article.user == current_user %>
-   <div><%= link_to 'Delete', article, method: :delete, data: { confirm: 'Are you sure?'} %></div>
+  <%= link_to 'Edit', article %>
+  <%= link_to 'Delete', article, method: :delete, data: { confirm: 'Are you sure?'} %><br/>
   <% end %>
   <h3>Comments </h3>
   <%= render article.comments %>

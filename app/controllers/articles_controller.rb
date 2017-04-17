@@ -1,5 +1,7 @@
 class ArticlesController < ApplicationController
   before_action :authenticate_user!
+  before_action :find_article, only: [ :edit, :update, :destroy]
+
 
   def index
     @articles = Article.all
@@ -25,8 +27,7 @@ class ArticlesController < ApplicationController
   end
 
   def update
-    @article.update_attributes(article_params)
-     if @article.errors.empty?
+      if @article.update_attributes(article_params)
        redirect_to current_user
      else
        render 'edit'
@@ -34,12 +35,14 @@ class ArticlesController < ApplicationController
   end
 
   def destroy
-    @article = Article.find(params[:id])
     @article.destroy
     redirect_to current_user
   end
 
   private
+  def find_article
+    @article = Article.find(params[:id])
+  end
 
   def article_params
     params.require(:article).permit(:body,:label, :user_id)

@@ -1,0 +1,8 @@
+<h1>Edit comment</h1>
+<%= form_for([@article, @article.comments.build])  do |f| %>
+    <div class="field">
+
+    <%= f.text_area :content %>
+  </div>
+  <%= f.submit "OK", class: "btn btn-large btn-primary" %>
+<% end %>

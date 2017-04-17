@@ -12,7 +12,8 @@
     Posted <%= time_ago_in_words(feed_item.created_at) %> ago.
     </span>
     <% if feed_item.user == current_user %>
-    <div><%= link_to 'Delete', feed_item, method: :delete, data: { confirm: 'Are you sure?'} %></div>
+    <%= link_to 'Edit', edit_article_path(feed_item) %>
+    <%= link_to 'Delete', feed_item, method: :delete, data: { confirm: 'Are you sure?'} %><br/>
     <% end %>
     </li>
     <h3>Comments </h3>
