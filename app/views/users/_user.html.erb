@@ -1,4 +1,13 @@
 <li>
   <%= image_tag user.avatar.url(:thumb) %>
   <%= link_to user.username, user %>
+  <%= user.articles.last do |a|  %>
+    <li class="article">
+      <span class="label"><%= a.label %></span><br/>
+      <span class="body"><%= a.body %></span><br/>
+      <span class="timestamp">
+      Posted <%= time_ago_in_words(a.created_at) %> ago.
+      </span><br/>
+    <% end %>
+    </li>
 </li>
