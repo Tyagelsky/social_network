@@ -5,6 +5,7 @@
   <span class="timestamp">
     Posted <%= article.created_at %> ago.
   </span>
+  <span class="file"> <%= article.file_file_name %></span>
   <% if article.user == current_user %>
   <%= link_to 'Edit', article %>
   <%= link_to 'Delete', article, method: :delete, data: { confirm: 'Are you sure?'} %><br/>

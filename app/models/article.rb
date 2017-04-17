@@ -4,6 +4,8 @@ class Article < ActiveRecord::Base
   default_scope -> { order('created_at DESC') }
   validates :user_id, :label, presence: true
   validates :body ,  presence: true, length: { maximum: 250 }
+  has_attached_file :file
+  do_not_validate_attachment_file_type :file
 
     def self.from_users_followed_by(user)
       followed_user_ids = "SELECT followed_id FROM relationships
