@@ -1,5 +1,6 @@
 <%= form_for @article, :url => articles_path(@article) do |f| %>
     <div class="field">
+      <h3>Post new article</h3>
     <%= f.text_field :label, placeholder: "Header.." %>
     <%= f.text_area :body, placeholder: "New article.." %>
     <p><%= f.file_field :file %><p/>

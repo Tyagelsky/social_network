@@ -1,13 +1,17 @@
 <li>
   <%= image_tag user.avatar.url(:thumb) %>
-  <%= link_to user.username, user %>
-  <%= user.articles.last do |a|  %>
-    <li class="article">
-      <span class="label"><%= a.label %></span><br/>
-      <span class="body"><%= a.body %></span><br/>
-      <span class="timestamp">
-      Posted <%= time_ago_in_words(a.created_at) %> ago.
-      </span><br/>
-    <% end %>
-    </li>
+  <%= link_to user.username, user %><br/>
+  <% if user.articles.any? %>
+  <h4>Last article</h4>
+    <span class="label"><%= user.articles.first.label%></span><br/>
+    <span class="body"><%= user.articles.first.body%></span><br/>
+    <span class="timestamp">Posted <%= user.articles.first.created_at%> ago.</span><br/>
+    <% if user.articles.first.comments.any? %>
+      <h4>Last comment</h4>
+      <span class="content"><%= user.articles.first.comments.last.content%></span><br/>
+      <span class="timestamp">Posted <%= user.articles.first.comments.last.created_at%> ago.</span><br/>
+    <%end%>
+  <%end%>
+
+
 </li>

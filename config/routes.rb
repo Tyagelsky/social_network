@@ -11,6 +11,7 @@ Rails.application.routes.draw do
     resources :comments
   end
   patch "/articles/:id", to: "articles#update", as: "update_article"
+  patch "/comments/:id", to: "comments#update", as: "update_comment"
 
   resources :relationships, only: [:create, :destroy]
   root 'static_pages#root'

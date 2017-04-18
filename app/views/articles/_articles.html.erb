@@ -6,7 +6,7 @@
       Posted <%= article.created_at %> ago.
     </span><br/>
     <span class="file"> <%= article.file_file_name %></span>
-    <%= link_to "Download", article.file.url(:original, false) if article.file.exists?%><br/>
+    <%= link_to "Browse attachment", article.file.url(:original, false) if article.file.exists?%><br/>
     <% if article.user == current_user %>
     <%= link_to 'Edit', edit_article_path(article) %>
     <%= link_to 'Delete', article, method: :delete, data: { confirm: 'Are you sure?'} %><br/>
@@ -17,4 +17,5 @@
       <%= render partial: 'comments/form', locals: {article: article} %>
     </div>
   </ol>
+  <hr class="post-separator">
 </div>

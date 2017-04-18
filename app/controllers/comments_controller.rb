@@ -8,11 +8,8 @@ class CommentsController < ApplicationController
     @comment = @article.comments.build(comment_params)
     @comment.user_id = current_user.id
     if @comment.save
-      flash[:success]="Comment created!"
-    else
-      flash[:alert]="Oops!"
-    end
-    redirect_to current_user
+    redirect_to user_path(@article.user_id)
+      end
   end
 
   def edit
@@ -23,7 +20,7 @@ class CommentsController < ApplicationController
 
   def update
      if @comment.update_attributes(comment_params)
-       redirect_to current_user
+       redirect_to user_path(@article.user_id)
      else
        render 'edit'
      end
@@ -33,8 +30,8 @@ class CommentsController < ApplicationController
     @article = Article.find(params[:article_id])
     @comment = @article.comments.find(params[:id])
     @comment.destroy
-    redirect_to current_user
-        
+    redirect_to user_path(@article.user_id)
+
   end
 
 
